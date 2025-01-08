@@ -1,0 +1,65 @@
+{%extends "main.html"%} {%block view%}
+<div class="main-container container-fluid view">
+  <div class="row">
+    <div class="col-3 song-details">
+      <h3><i class="fa-solid fa-music me-2"></i>Album Details</h3>
+      <br />
+      {%for artist in artists%} {%if artist.artist_id == album.artist_id%}
+      <h6 class="contents">
+        <span class="domain">Name:</span> {{album.album_name}}
+      </h6>
+      <h6 class="contents">
+        <span class="domain">Artist: </span> {{artist.name}}
+      </h6>
+      <h6 class="contents">
+        <span class="domain">Created:</span>
+        {{album.created_at.strftime('%d-%m-%Y')}}
+      </h6>
+      <br />
+      <h3><i class="fa-solid fa-microphone me-2"></i>About Artist</h3>
+      <div class="about-artist">
+        <h6>{{artist.description}}</h6>
+      </div>
+      {%endif%} {%endfor%}
+    </div>
+    <div class="col-4 song-details">
+      <h3><i class="fa-solid fa-music me-3"></i>Songs in Album</h3>
+      <br />
+      <table class="genre-songs">
+        {%for song in songs%}
+        <tr style="height: 50px">
+          <td style="width: 400px"><h5>{{song.title}}</h5></td>
+          <td>
+            <a
+              class="btn lyrics-btn"
+              href="{{url_for('play_songs', song_id=song.song_id)}}"
+            >
+              <i class="fa-solid fa-circle-play me-2"></i>Play
+            </a>
+          </td>
+        </tr>
+        {%endfor%}
+      </table>
+    </div>
+    <div class="col-4 song-details">
+      <h3><i class="fa-solid fa-music me-3"></i>Other Albums</h3>
+      <br />
+      <table class="genre-songs">
+        {%for album in albums%}
+        <tr style="height: 50px">
+          <td style="width: 400px"><h5>{{album.album_name}}</h5></td>
+          <td>
+            <a
+              class="card-link btn control-link lyrics-btn"
+              href="{{url_for('view_albums', album_id = album.album_id)}}"
+            >
+              <i class="fa-solid fa-eye me-2"></i>View
+            </a>
+          </td>
+        </tr>
+        {%endfor%}
+      </table>
+    </div>
+  </div>
+</div>
+{%endblock%}

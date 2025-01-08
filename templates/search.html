@@ -1,0 +1,62 @@
+{% extends "main.html" %} {%block search%}
+<link href="/static/styles/songs.css" rel="stylesheet" />
+<div class="main search-results">
+  <h3>Search Results for : {{keyword}}</h3>
+  <br />
+  <h4>Songs</h4>
+  <br />
+  <div class="container-fluid songs-container">
+    <div class="row">
+      {% if result_song|length == 0 %}
+      <h5><span class="domain">Oops!</span> No Matching Songs Available!</h5>
+      {%else%} {%for result in result_song %} {% for artist in artists%} {%if
+      result.artist_id == artist.artist_id%}
+      <div class="card song-card me-3 mb-3" style="width: 18rem">
+        <div class="card-body">
+          <h5 class="card-title">{{result.title}}</h5>
+          <h6 class="card-subtitle">{{artist.name}}</h6>
+          <br />
+          <a
+            class="card-link btn control-link"
+            href="{{url_for('play_songs', song_id=result.song_id)}}"
+          >
+            <i class="fa-solid fa-circle-play me-2"></i>Play
+          </a>
+          <a class="card-link btn control-link">
+            <i class="fa-regular fa-heart me-2"></i>Like
+          </a>
+        </div>
+      </div>
+      {%endif%} {%endfor%} {%endfor%} {%endif%}
+    </div>
+  </div>
+  <br />
+  <h4>Albums</h4>
+  <br />
+  <div class="container-fluid songs-container">
+    <div class="row">
+      {% if result_album|length == 0 %}
+      <h5><span class="domain">Oops!</span> No Matching Albums Available!</h5>
+      {%else%}{%for result in result_album %} {% for artist in artists%} {%if
+      result.artist_id == artist.artist_id%}
+      <div class="card song-card me-3 mb-3" style="width: 17rem">
+        <div class="card-body">
+          <h5 class="card-title">{{result.album_name}}</h5>
+          <h6 class="card-subtitle">{{artist.name}}</h6>
+          <br />
+          <a
+            class="card-link btn control-link"
+            href="{{url_for('view_albums', album_id = result.album_id)}}"
+          >
+            <i class="fa-solid fa-eye me-2"></i>View
+          </a>
+          <a class="card-link btn control-link">
+            <i class="fa-regular fa-heart me-2"></i>Like
+          </a>
+        </div>
+      </div>
+      {%endif%} {%endfor%} {%endfor%} {%endif%}
+    </div>
+  </div>
+</div>
+{%endblock%}

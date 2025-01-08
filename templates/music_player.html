@@ -1,0 +1,148 @@
+{% extends "main.html" %} {%block musicplayer%}
+<div class="main-container container-fluid">
+  <div class="row">
+    <div class="col-3 song-details">
+      <h3><i class="fa-solid fa-music me-2"></i>Song Details</h3>
+      <br />
+      <h6 class="contents">
+        <span class="domain">Title:</span> {{song.title}}
+      </h6>
+      <h6 class="contents">
+        <span class="domain">Artist: </span> {{artist.name}}
+      </h6>
+      <h6 class="contents">
+        <span class="domain">Genre:</span> {{song.genre}}
+      </h6>
+      <h6 class="contents">
+        <span class="domain">Language:</span> {{song.language}}
+      </h6>
+      <h6 class="contents">
+        <span class="domain">Created:</span>
+        {{song.created_at.strftime('%d-%m-%Y')}}
+      </h6>
+      <br />
+      <h3><i class="fa-solid fa-microphone me-2"></i>About Artist</h3>
+      <div class="about-artist">
+        <h6>{{artist.description}}</h6>
+      </div>
+    </div>
+    <div class="col-5 suggested-songs">
+      <div class="col related-genre">
+        <h3>
+          <span class="domain"
+            ><i class="fa-solid fa-music me-2"></i>More in {{song.genre}}</span
+          >
+        </h3>
+        <table class="genre-songs">
+          {%for genre in genres%}
+          <tr style="height: 50px">
+            <td style="width: 400px"><h5>{{genre.title}}</h5></td>
+            <td>
+              <a
+                class="btn lyrics-btn"
+                href="{{url_for('play_songs', song_id=genre.song_id)}}"
+              >
+                <i class="fa-solid fa-circle-play me-2"></i>Play
+              </a>
+            </td>
+          </tr>
+          {%endfor%}
+        </table>
+      </div>
+      <div class="col related-lang">
+        <h3>
+          <span class="domain"
+            ><i class="fa-solid fa-music me-2"></i>More in
+            {{song.language}}</span
+          >
+        </h3>
+        <table class="genre-songs">
+          {%for lang in langs%}
+          <tr style="height: 50px">
+            <td style="width: 400px"><h5>{{lang.title}}</h5></td>
+            <td>
+              <a
+                class="btn lyrics-btn"
+                href="{{url_for('play_songs', song_id=lang.song_id)}}"
+              >
+                <i class="fa-solid fa-circle-play me-2"></i>Play
+              </a>
+            </td>
+          </tr>
+          {%endfor%}
+        </table>
+      </div>
+    </div>
+    <div class="col-3 song-details">
+      <div class="add-to-playlist">
+        <h4>Add this Song to your Playlist!</h4>
+        <br />
+        <a
+          class="btn add-playlist-btn"
+          href="{{url_for('add_playlists', username=user.username)}}"
+          ><i class="fa-solid fa-plus me-2"></i>Add Playlist</a
+        >
+      </div>
+      <div class="add-to-likes">
+        <h4>Enjoying the song? Add to Likes</h4>
+        <br />
+        {%if song.song_id in likes | map(attribute='song_id')%}
+        <a
+          class="btn add-playlist-btn"
+          href="{{url_for('dislike_songs', song_id=song.song_id)}}"
+          ><i class="fa-solid fa-heart me-2"></i>Added to Likes</a
+        >
+        {%else%}
+        <a
+          class="btn add-playlist-btn"
+          href="{{url_for('like_songs', song_id=song.song_id)}}"
+          ><i class="fa-regular fa-heart me-2"></i>Add to Likes</a
+        >
+        {%endif%}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="music-player container-fluid">
+  <div class="row">
+    <div class="col-4 current">
+      <h5>
+        <p id="current-song">
+          <span class="domain"
+            ><i class="fa-solid fa-music me-2"></i> Currently Playing: </span
+          >{{song.title}}
+        </p>
+      </h5>
+    </div>
+    <div class="col-4 audio-player">
+      <audio controls autoplay>
+        <source src="/static/audio/{{song.song_id}}.mp3" type="audio/mpeg" />
+        Download <a href="/static/audio/{{song.song_id}}.mp3">MP3</a> Audio.
+      </audio>
+    </div>
+    <div class="col-3 d-flex justify-content-end">
+      <button class="btn lyrics-btn" onclick="show_lyrics()">Lyrics</button>
+    </div>
+  </div>
+</div>
+<div class="lyrics-block-container container-fluid">
+  <div class="row d-flex justify-content-end">
+    <div class="col-3 lyrics-block" id="show-lyrics">
+      <div class="row">
+        <div class="col">
+          <h4 class="lyrics-title">
+            <b><i class="fa-solid fa-sheet-plastic me-2"></i>Lyrics</b>
+          </h4>
+        </div>
+        <div class="col d-flex justify-content-end">
+          <button class="btn btn-dark" onclick="close_lyrics()">
+            <i class="fa-solid fa-x"></i>
+          </button>
+        </div>
+      </div>
+      <br />
+      <p class="lyrics">{{song.lyrics}}</p>
+    </div>
+  </div>
+</div>
+{%endblock%}

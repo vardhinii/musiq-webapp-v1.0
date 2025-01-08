@@ -1,0 +1,55 @@
+{%extends "admin_dashboard.html"%}{%block stats%}
+<div class="main container-fluid mt-3">
+          <br />
+            <div class="personal-details mb-5">
+                <h3>App Statistics</h3>
+                <br/>
+                <div class="row personal-info">
+                    <div class="col-2 personal">
+                        <h4>Admin</h4>
+                        <br/>
+                        <h5><span class="domain"><i class="fa-solid fa-envelope me-2"></i>Username:</span> {{user.username}}</h5>
+                    </div>
+                    <div class="col-2 stats">
+                        <h4 class="domain">Total Users</h4>
+                        <h1>{{users | length}}</h1>
+                    </div>
+                    <div class="col-2 stats">
+                        <h4 class="domain">Total Songs</h4>
+                        <h1>{{songs | length}}</h1>
+                    </div>
+                    <div class="col-2 stats">
+                        <h4 class="domain">Total Creators</h4>
+                        <h1>{{creators | length}}</h1>
+                    </div>
+                    <div class="col-2 stats">
+                        <h4 class="domain">Total Albums</h4>
+                        <h1>{{albums | length}}</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="graphics-container mb-5">
+                <h3>Graphical Stats</h3>
+                <br />
+                <div class="graphics-align-container">
+                  <div class="row titles mb-2">
+                    <div class="col-4 d-flex justify-content-center">
+                      <h5 class="creator-user">Creator User Ratio</h5>
+                    </div>
+                    <div class="col-4 d-flex justify-content-center">
+                      <h5 class="lang">Languages</h5>
+                    </div>
+                  </div>
+                  <div class="row content">
+                    <div class="col-4 creator-user-ratio">
+                        <img src="/static/images/user_creator_piechart.png" alt="creator-user-ratio" class="pie-chart"/>
+                    </div>
+                    <div class="col-4 song-languages">
+                        <img src="/static/images/song_languages_piechart.png" alt="song-languages" class="pie-chart"/>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+{%endblock%}

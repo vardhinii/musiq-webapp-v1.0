@@ -1,0 +1,60 @@
+{% extends "admin_dashboard.html" %} {%block songs%}
+<link href="/static/styles/songs.css" rel="stylesheet" />
+<div class="main">
+  <div class="songs-card all-songs mt-5">
+    <h4>All Songs</h4>
+    <br />
+    <div class="container-fluid songs-container admin-songs">
+      <div class="row">
+        {%for song in songs%} {%for artist in artists%} {% if song.artist_id ==
+        artist.artist_id%}
+        <div class="card song-card me-3 mb-3" style="width: 25rem">
+          <div class="card-body">
+            <h5 class="card-title" id="card-title">{{song.title}}</h5>
+            <h6 class="card-subtitle mb-2">{{artist.name}}</h6>
+            {% set song_creators = creators | selectattr('song_id', 'equalto',
+            song.song_id) | list %} {% if song_creators %}
+            <h6 class="card-subtitle">
+              Added by: User {{ song_creators[0].user_id }}
+            </h6>
+            {% else %}
+            <h6 class="card-subtitle">Added by: admin</h6>
+            {% endif %}
+            <br />
+            {%if song.flag%}
+            <a
+              class="card-link btn control-link"
+              href="{{url_for('unflag_songs', song_id=song.song_id)}}"
+            >
+              <i class="fa-solid fa-flag me-2"></i>
+              Flagged
+            </a>
+            {%else%}
+            <a
+              class="card-link btn control-link"
+              href="{{url_for('flag_songs', song_id=song.song_id)}}"
+            >
+              <i class="fa-regular fa-flag me-2"></i>
+              Flag
+            </a>
+            {%endif%}
+            <a
+              class="card-link btn control-link"
+              href="{{url_for('delete_songs', song_id=song.song_id)}}"
+            >
+              <i class="fa-solid fa-trash me-2"></i> Delete
+            </a>
+            <a
+              class="card-link btn control-link"
+              href="{{url_for('update_songs', song_id=song.song_id)}}"
+            >
+              <i class="fa-solid fa-pen-to-square me-2"></i> Edit
+            </a>
+          </div>
+        </div>
+        {%endif%} {%endfor%} {%endfor%}
+      </div>
+    </div>
+  </div>
+</div>
+{%endblock%}
