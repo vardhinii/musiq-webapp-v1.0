@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Gabarito&family=Young+Serif&display=swap");
+
+:root {
+  --primary-font: "Gabarito", sans-serif;
+  --primary-color: #1c1b1b;
+  --primary-color-dark: #141313;
+  --primary-color-derived: #212121;
+  --secondary-color: #fc3c44;
+  --secondary-color-derived: #fe5e63;
+  --secondary-color-derived-2: #fa8b8f;
+}
+
+* {
+  font-family: var(--primary-font);
+}
+
+.main {
+  padding-left: 50px;
+}
+
+.admin-songs {
+  padding-left: 70px !important;
+}
+
+.song-card {
+  background-color: var(--primary-color-dark);
+  border-color: black !important;
+  color: whitesmoke;
+}
+
+.control-link {
+  background-color: var(--secondary-color) !important;
+  color: whitesmoke !important;
+}
+
+.control-link:hover {
+  background-color: var(--secondary-color-derived) !important;
+  transition: ease-in-out;
+  color: black !important;
+}
+
+.domain {
+  color: var(--secondary-color);
+}

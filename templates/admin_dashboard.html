@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <!--Favion-->
+    <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico" />
+    <!--CSS-->
+    <link href="/static/styles/user_dashboard.css" rel="stylesheet" />
+    <!--Bootstrap-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <!--Fontawesome-->
+    <script
+      src="https://kit.fontawesome.com/091bbf61ba.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+        <!--Navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark">
+          <div class="container-fluid navabar-items">
+            <!--Logo-->
+            <div class="logo col-2">
+              <a class="navbar-brand" href="{{url_for('show_main')}}">
+                <img
+                  src="/static/images/brand-logo.png"
+                  width="30"
+                  height="30"
+                  class="d-inline-block align-top"
+                  alt="Your Logo"
+                />
+                MUSIQ
+              </a>
+            </div>
+              <div class="buttons col-6 d-flex justify-content-end">
+                <a
+                class="btn logout me-3"
+                href="{{url_for('add_songs', path='admin')}}"
+                >
+                Add Songs
+                </a>
+                <a
+                class="btn logout me-3"
+                href="{{url_for('add_albums', path='admin')}}"
+                >
+                Add Albums
+                </a>
+                <a
+                class="btn logout"
+                href="{{url_for('do_logout')}}"
+                >
+                Logout
+                </a>
+              </div>
+            </div>
+          </div>
+        </nav>
+        <div class="container navitem-tab d-flex justify-content-center">
+      <ul class="nav nav-underline">
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('admin_dashboard')}}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('admin_songs')}}">View Songs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('admin_albums')}}">View Albums</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('view_users')}}">User Details</a>
+        </li>
+      </ul>
+      </div>
+      {%block stats%} {%endblock%}
+      {%block songs%} {%endblock%}
+      {%block albums%} {%endblock%}
+      {%block users%} {%endblock%}
+      {% with messages = get_flashed_messages() %} {% if messages %} {% for message in
+        messages %}
+      <div class="alert alert-success alert-dismissible mt-2 w-25" role="alert">
+        <div><i class="fa-solid fa-check me-2"></i> {{message}}</div>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
+      {% endfor %} {% endif %} {% endwith %}
+    </body>
+</html>

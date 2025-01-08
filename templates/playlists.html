@@ -1,0 +1,36 @@
+{% extends "main.html" %} {%block playlists%}
+<link href="/static/styles/songs.css" rel="stylesheet" />
+<div class="main">
+  <h3>
+    Welcome {{user.first_name}}!<br />
+    Tune in to your favourite songs NOW!
+  </h3>
+  <div class="songs-card all-songs mt-5">
+    <h4>{{title}}</h4>
+    <br />
+    <div class="container-fluid album-container">
+      <div class="row">
+        {%for playlist in playlists%} {% for user in users%} {%if
+        playlist.user_id == user.user_id%}
+        <div class="card song-card me-3 mb-3" style="width: 21rem">
+          <div class="card-body">
+            <h5 class="card-title">{{playlist.name}}</h5>
+            <h6 class="card-subtitle mb-2">Created by: {{user.username}}</h6>
+            <h6 class="card-subtitle">
+              Created at: {{playlist.created_at.strftime('%d-%m-%Y')}}
+            </h6>
+            <br />
+            <a
+              class="card-link btn control-link"
+              href="{{url_for('view_playlists', playlist_id = playlist.playlist_id)}}"
+            >
+              <i class="fa-solid fa-eye me-2"></i>View
+            </a>
+          </div>
+        </div>
+        {%endif%} {%endfor%} {%endfor%}
+      </div>
+    </div>
+  </div>
+</div>
+{%endblock%}

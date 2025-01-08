@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Gabarito&family=Young+Serif&display=swap");
+
+:root {
+  --primary-font: "Gabarito", sans-serif;
+  --primary-color: #1c1b1b;
+  --primary-color-derived: #212121;
+  --secondary-color: #fc3c44;
+  --secondary-color-derived: #fe5e63;
+  --secondary-color-derived-2: #fa8b8f;
+}
+
+* {
+  font-family: var(--primary-font);
+}
+
+body {
+  background-color: var(--primary-color) !important;
+  color: whitesmoke !important;
+  overflow-y: hidden;
+}
+
+.navbar {
+  height: 3.75rem;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+  background-color: var(--primary-color);
+}
+
+.login,
+.signup {
+  background-color: var(--secondary-color) !important;
+  width: 120px !important;
+  color: antiquewhite !important;
+}
+
+.login:hover,
+.signup:hover {
+  background-color: var(--secondary-color-derived) !important;
+  transition: ease-in-out;
+  color: black !important;
+}
+
+.row-main {
+  padding-top: 8px;
+}
+
+.login-form {
+  background-color: var(--primary-color);
+  border-radius: 20px;
+  padding: 60px;
+  padding-left: 30px !important;
+  padding-right: 30px !important;
+}
+
+h1 {
+  text-align: center !important;
+  color: var(--secondary-color) !important;
+  margin-bottom: 30px !important;
+}
+
+label {
+  font-size: 16px;
+}
+
+.form-text {
+  color: antiquewhite !important;
+  font-size: 12px !important;
+}
+
+.button-div {
+  display: flex;
+  justify-content: center;
+}
+
+.alert {
+  font-size: 14px !important;
+  position: relative;
+  top: -50px;
+  left: 25px;
+}

@@ -1,0 +1,62 @@
+{%extends "main.html"%} {%block view%}
+<div class="main-container container-fluid view">
+  <div class="row">
+    <div class="col-3 song-details playlist-details">
+      <h3><i class="fa-solid fa-music me-2"></i>Playlist Details</h3>
+      <br />
+      {%for user in users%} {%if user.user_id == playlist.user_id%}
+      <h6 class="contents">
+        <span class="domain">Name:</span> {{playlist.name}}
+      </h6>
+      <h6 class="contents">
+        <span class="domain">Created by: </span> {{user.username}}
+      </h6>
+      <h6 class="contents">
+        <span class="domain">Created:</span>
+        {{playlist.created_at.strftime('%d-%m-%Y')}}
+      </h6>
+      <br />
+      {%endif%} {%endfor%}
+      <br />
+    </div>
+    <div class="col-4 song-details playlist-details">
+      <h3><i class="fa-solid fa-music me-3"></i>Songs in Playlist</h3>
+      <br />
+      <table class="genre-songs">
+        {%for song in songs%}
+        <tr style="height: 50px">
+          <td style="width: 400px"><h5>{{song.title}}</h5></td>
+          <td>
+            <a
+              class="btn lyrics-btn"
+              href="{{url_for('play_songs', song_id=song.song_id)}}"
+            >
+              <i class="fa-solid fa-circle-play me-2"></i>Play
+            </a>
+          </td>
+        </tr>
+        {%endfor%}
+      </table>
+    </div>
+    <div class="col-4 song-details playlist-details">
+      <h3><i class="fa-solid fa-music me-3"></i>Other Playlists</h3>
+      <br />
+      <table class="genre-songs">
+        {%for playlist in playlists%}
+        <tr style="height: 50px">
+          <td style="width: 400px"><h5>{{playlist.name}}</h5></td>
+          <td>
+            <a
+              class="card-link btn control-link lyrics-btn"
+              href="{{url_for('view_playlists', playlist_id = playlist.playlist_id)}}"
+            >
+              <i class="fa-solid fa-eye me-2"></i>View
+            </a>
+          </td>
+        </tr>
+        {%endfor%}
+      </table>
+    </div>
+  </div>
+</div>
+{%endblock%}

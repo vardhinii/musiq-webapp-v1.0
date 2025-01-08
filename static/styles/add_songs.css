@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=Gabarito&family=Young+Serif&display=swap");
+
+:root {
+  --primary-font: "Gabarito", sans-serif;
+  --primary-color: #1c1b1b;
+  --primary-color-dark: #141313;
+  --primary-color-derived: #212121;
+  --secondary-color: #fc3c44;
+  --secondary-color-derived: #fe5e63;
+  --secondary-color-derived-2: #fa8b8f;
+}
+
+* {
+  font-family: var(--primary-font);
+}
+
+body {
+  background-color: var(--primary-color-derived) !important;
+  color: whitesmoke !important;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.navbar {
+  height: 3.75rem;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+  background-color: var(--primary-color);
+}
+
+.home,
+.submit,
+.add-song {
+  background-color: var(--secondary-color) !important;
+  width: 150px;
+  color: whitesmoke !important;
+}
+
+.submit {
+  width: 100px;
+}
+
+.home:hover,
+.submit:hover {
+  background-color: var(--secondary-color-derived) !important;
+  transition: ease-in-out;
+  color: black !important;
+}
+
+.main {
+  padding-left: 80px;
+  padding-top: 20px;
+}
+
+.playlist {
+  padding-top: 100px;
+}
+
+.add-song-form,
+.playlist-form,
+.playlist-form-update,
+.album-form-update {
+  background-color: var(--primary-color-dark);
+  border-radius: 10px;
+  padding: 20px;
+  padding-left: 30px !important;
+  padding-right: 30px !important;
+  margin-left: 120px;
+}
+
+.playlist-form-update {
+  margin-left: 0px !important;
+  height: 500px;
+}
+
+.album-form-update {
+  margin-left: 0px !important;
+  margin-top: -20px !important;
+}
+
+.update-song-form {
+  margin-left: -90px !important;
+  margin-top: 20px !important;
+}
+
+label {
+  font-size: 16px;
+}
+
+.button-div {
+  display: flex;
+  justify-content: center;
+}
+
+.add-song {
+  width: 120px !important;
+}
+
+.existing-songs,
+.existing-playlists {
+  background-color: var(--primary-color-dark);
+  border-color: black;
+  border-radius: 10px;
+  margin-left: 20px;
+  padding-left: 35px !important;
+  padding-top: 25px !important;
+  padding-bottom: 10px !important;
+}
+
+.playlist-form {
+  margin-left: 180px !important;
+}
+
+.play-btn {
+  background-color: var(--secondary-color) !important;
+  color: antiquewhite !important;
+  height: 40px !important;
+  width: 100px !important;
+}
+
+.alert {
+  font-size: 14px !important;
+  position: relative;
+  bottom: 55px;
+  left: 25px;
+}

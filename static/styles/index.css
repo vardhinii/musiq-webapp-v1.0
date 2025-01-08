@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Gabarito&family=Young+Serif&display=swap");
+
+:root {
+  --primary-font: "Gabarito", sans-serif;
+  --primary-color: #1c1b1b;
+  --primary-color-derived: #212121;
+  --secondary-color: #fc3c44;
+  --secondary-color-derived: #fe5e63;
+  --secondary-color-derived-2: #fa8b8f;
+}
+
+* {
+  font-family: var(--primary-font);
+}
+
+body {
+  background-color: var(--primary-color-derived) !important;
+  color: whitesmoke !important;
+}
+
+.navbar {
+  height: 3.75rem;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+  background-color: var(--primary-color);
+}
+
+.login,
+.signup {
+  background-color: var(--secondary-color) !important;
+  width: 120px !important;
+  color: whitesmoke !important;
+}
+
+.login:hover,
+.signup:hover {
+  background-color: var(--secondary-color-derived) !important;
+  transition: ease-in-out;
+  color: black !important;
+}
+
+.row {
+  padding-top: 80px;
+  padding-left: 50px;
+}
+
+.big-font {
+  font-size: 50px;
+  color: var(--secondary-color) !important;
+}
+
+.about-app {
+  text-align: justify;
+  font-size: 18px;
+}
+
+.features-explain,
+.tech-stack-explain {
+  text-align: justify;
+}
+
+.features,
+.tech-stack,
+.about-me {
+  font-size: 20px !important;
+  text-align: left !important;
+  border-radius: 2px !important;
+  transition: ease-in-out 4ms;
+}
+
+.features:hover,
+.tech-stack:hover,
+.about-me:hover {
+  color: var(--primary-color) !important;
+  width: 250px !important;
+}
+
+.features {
+  background-color: var(--secondary-color) !important;
+}
+
+.tech-stack {
+  background-color: var(--secondary-color-derived) !important;
+}
+
+.about-me {
+  background-color: var(--secondary-color-derived-2) !important;
+}
+
+.brand-image {
+  display: flex;
+  justify-content: end !important;
+  padding-right: 100px !important;
+}

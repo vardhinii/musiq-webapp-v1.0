@@ -1,0 +1,216 @@
+@import url("https://fonts.googleapis.com/css2?family=Gabarito&family=Young+Serif&display=swap");
+
+:root {
+  --primary-font: "Gabarito", sans-serif;
+  --primary-color: #1c1b1b;
+  --primary-color-dark: #141313;
+  --primary-color-derived: #212121;
+  --secondary-color: #fc3c44;
+  --secondary-color-derived: #fe5e63;
+  --secondary-color-derived-2: #fa8b8f;
+}
+
+* {
+  font-family: var(--primary-font);
+}
+
+body {
+  background-color: var(--primary-color-derived) !important;
+  color: whitesmoke !important;
+}
+
+.navbar {
+  height: 3.75rem;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+  background-color: var(--primary-color);
+}
+
+.search-bar {
+  width: 400px !important;
+}
+
+.user-dashboard {
+  font-size: 25px !important;
+  color: whitesmoke !important;
+}
+
+.language,
+.nav-item .nav-link,
+.navitem-tab .nav-link {
+  color: whitesmoke !important;
+}
+
+.navitem-tab {
+  padding-top: 20px;
+}
+
+.alert {
+  font-size: 14px !important;
+  position: fixed;
+  bottom: 0px !important;
+  left: 25px;
+}
+
+.main {
+  padding-left: 20px;
+  padding-top: 20px;
+}
+
+.main-container {
+  padding-left: 20px !important;
+  padding-top: 20px !important;
+}
+
+.contents {
+  padding-left: 30px !important;
+}
+
+.song-details,
+.playlist-details {
+  background-color: var(--primary-color-dark);
+  border-color: black;
+  border-radius: 10px;
+  margin-left: 30px;
+  padding-left: 35px !important;
+  padding-top: 50px !important;
+  padding-right: 35px !important;
+  height: 500px !important;
+}
+
+.playlist-details {
+  margin-top: 50px !important;
+  height: 400px !important;
+}
+
+.view {
+  padding-top: 40px !important;
+}
+
+.about-artist {
+  background-color: var(--secondary-color);
+  border-color: black;
+  border-radius: 10px;
+  margin: 20px;
+  padding: 10px !important;
+  color: var(--primary-color);
+}
+
+.related-genre,
+.related-lang {
+  background-color: var(--primary-color-dark);
+  border-color: black;
+  border-radius: 10px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  padding-left: 35px !important;
+  padding-top: 25px !important;
+  height: 240px !important;
+  padding-bottom: 10px !important;
+}
+
+.music-player {
+  position: fixed;
+  height: 60px;
+  width: 100%;
+  background-color: var(--primary-color-dark);
+  border-color: black !important;
+  bottom: 0px !important;
+  z-index: -1 !important;
+  padding-top: 10px;
+}
+
+.lyrics-block {
+  position: fixed;
+  height: 500px !important;
+  background-color: var(--secondary-color);
+  bottom: 100px !important;
+  right: 50px;
+  z-index: 1 !important;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  padding-left: 30px !important;
+  padding-right: 30px !important;
+  overflow-y: scroll !important;
+  border-radius: 20px;
+  display: none;
+  animation-name: animatelyrics;
+  animation-duration: 0.1s;
+}
+
+.btn-dark {
+  border-radius: 100px !important;
+  position: relative;
+  bottom: 6px !important;
+  left: 10px !important;
+  font-size: x-small !important;
+  width: 35px;
+}
+
+.current {
+  padding-left: 50px !important;
+  padding-top: 10px;
+}
+
+.lyrics-btn,
+.add-playlist-btn {
+  background-color: var(--secondary-color) !important;
+  color: antiquewhite !important;
+  height: 40px !important;
+  width: 100px !important;
+}
+
+.add-playlist-btn {
+  width: 180px !important;
+}
+
+.lyrics-btn:hover,
+.add-playlist-btn:hover {
+  background-color: var(--secondary-color-derived) !important;
+  transition: ease-in-out;
+  color: black !important;
+}
+
+.domain {
+  color: var(--secondary-color);
+}
+
+.add-to-playlist {
+  height: 240px !important;
+}
+
+audio {
+  width: 600px;
+  height: 30px;
+  display: block;
+  border-radius: 20px;
+  margin: 0 auto;
+}
+
+audio::-webkit-media-controls-play-button,
+audio::-webkit-media-controls-panel {
+  background-color: var(--secondary-color);
+}
+
+.audio-player {
+  padding-top: 5px;
+}
+
+.lyrics-block h4 {
+  color: var(--primary-color-dark);
+}
+
+.lyrics {
+  white-space: pre-wrap;
+}
+
+@keyframes animatelyrics {
+  from {
+    bottom: -500px;
+    opacity: 0;
+  }
+  to {
+    top: 100px;
+    opacity: 1;
+  }
+}

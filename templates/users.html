@@ -1,0 +1,20 @@
+{%extends "admin_dashboard.html"%} {%block users%} 
+<div class="songs-card all-users main mt-5">
+    <h4>All Users</h4>
+    <br />
+    <div class="container-fluid songs-container">
+      <div class="row">
+        {%for user in users%} 
+        <div class="card song-card me-3 mb-3" style="width: 16rem">
+          <div class="card-body">
+            <h5 class="card-title domain" id="card-title">{{user.first_name}} {{user.last_name}}</h5>
+            <h6 class="card-subtitle mb-2">{{user.username}}</h6>
+            <h6 class="card-subtitle mb-2">{{user.gender | capitalize}}</h6>
+          </div>
+        </div>
+        {%endfor%}
+      </div>
+    </div>
+  </div>
+</div>
+{%endblock%}
